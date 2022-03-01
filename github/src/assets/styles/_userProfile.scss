@@ -1,0 +1,76 @@
+.userProfile-container {
+  color: #fff;
+  transition: all 0.3s;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  &:hover {
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 25px 50px -12px;
+    transition: all 0.3s;
+  }
+  margin-top: 50px;
+  padding: 10px;
+  line-height: 1.4rem;
+  width: fit-content;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: #1e2c41;
+  margin: 50px auto;
+  a {
+    color: #fff;
+    &:hover {
+      color: #908fff;
+      text-decoration: underline;
+    }
+  }
+  svg {
+    margin: 0 5px;
+    font-size: 1.1rem;
+    color: #a0a0a0;
+  }
+  img {
+    width: 260px;
+    margin: 15px auto;
+    border-radius: 50%;
+  }
+  .user-default {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    div {
+      margin-top: 10px;
+    }
+    .userName {
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 300;
+      line-height: 24px;
+      color: #a0a0a0;
+    }
+  }
+  .bio {
+    width: 285px;
+    margin-top: 10px;
+  }
+  .follow {
+    margin: 20px 0;
+    display: flex;
+    span {
+      font-weight: bold;
+    }
+  }
+  .blog {
+    display: flex;
+    align-items: center;
+    width: 300px;
+  }
+  .works {
+    margin-top: 15px;
+    .repo,
+    .gist {
+      display: flex;
+      span {
+        font-weight: bold;
+        margin-left: 3px;
+      }
+    }
+  }
+}

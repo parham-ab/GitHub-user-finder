@@ -1,0 +1,39 @@
+.mainPage-container {
+  form {
+    background-color: #161b22;
+    padding: 16px;
+    .search-container {
+      display: flex;
+      align-items: center;
+      margin-left: 16px;
+      input {
+        background-color: #e2e2e2;
+        margin: 0 5px 0 10px;
+        border-radius: 5px;
+        font-size: 1rem;
+        padding: 5px;
+        width: 190px;
+        transition: all 0.3s;
+        &:focus {
+          width: 260px;
+          transition: all 0.3s;
+        }
+      }
+      svg {
+        font-size: 32px;
+        color: #f0f6fc;
+      }
+      button {
+        cursor: pointer;
+        padding: 3px;
+        border-radius: 3px;
+        background-color: transparent;
+        color: #fff;
+        font-size: 0.9rem;
+        svg {
+          width: 20px;
+        }
+      }
+    }
+  }
+}

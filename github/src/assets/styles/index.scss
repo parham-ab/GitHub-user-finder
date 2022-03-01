@@ -1,0 +1,25 @@
+// CSS resets
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+body {
+  font-family: tahoma;
+}
+// preloader
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+}
+// styles
+@import "mainPage";
+@import "userProfile";
+@import "repository";
