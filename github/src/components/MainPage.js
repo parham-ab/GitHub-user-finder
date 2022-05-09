@@ -69,7 +69,10 @@ const MainPage = () => {
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
           />
-          <button type="submit">
+          <button
+            disabled={!inputValue || (!inputValue.trim() && true)}
+            type="submit"
+          >
             <BsSearch />
           </button>
         </div>

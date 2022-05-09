@@ -9,10 +9,18 @@ const UserProfile = ({ data }) => {
   return (
     <div className="userProfile-container">
       <div className="user-default">
-        <img src={data.avatar_url} alt="user_img" />
+        <img src={data.avatar_url} alt="user_img" loading="lazy" />
         <div>
           <h3 className="name">{data.name}</h3>
-          <p className="userName">{data.login}</p>
+          <p className="userName">
+            <a
+              href={`https://github.com/${data.login}`}
+              target={"_blank"}
+              rel="noreferrer"
+            >
+              {data.login}
+            </a>
+          </p>
         </div>
       </div>
       <p className="bio">{data.bio}</p>
@@ -22,6 +30,7 @@ const UserProfile = ({ data }) => {
           href={`https://github.com/${data.login}?tab=followers`}
           target="_blank"
           className="followers"
+          rel="noreferrer"
         >
           <span>{data.followers.toLocaleString()}</span> Followers
         </a>
@@ -30,27 +39,28 @@ const UserProfile = ({ data }) => {
           href={`https://github.com/${data.login}?tab=following`}
           target="_blank"
           className="followings"
+          rel="noreferrer"
         >
           <span>{data.following.toLocaleString()}</span> Followings
         </a>
       </div>
       {data.company && (
-        <p className="company">
+        <div className="company">
           <BiBuildings />
           {data.company}
-        </p>
+        </div>
       )}
       {data.location && (
-        <p className="location">
+        <div className="location">
           <HiOutlineLocationMarker />
           {data.location}
-        </p>
+        </div>
       )}
       {data.email && (
-        <p className="email">
+        <div className="email">
           <HiOutlineMail />
           {data.email}
-        </p>
+        </div>
       )}
       {data.blog && (
         <div className="blog">
@@ -61,20 +71,23 @@ const UserProfile = ({ data }) => {
         </div>
       )}
       {data.twitter_username && (
-        <a
-          target={"_blank"}
-          href={`https://twitter.com/${data.twitter_username}`}
-          className="twitter"
-        >
-          <BsTwitter />
-          {data.twitter_username}
-        </a>
+        <div className="twitter">
+          <a
+            target={"_blank"}
+            href={`https://twitter.com/${data.twitter_username}`}
+            rel="noreferrer"
+          >
+            <BsTwitter />
+            {data.twitter_username}
+          </a>
+        </div>
       )}
       <div className="works">
         {data.public_repos > 0 && (
           <a
             target={"_blank"}
             href={`https://github.com/${data.login}?tab=repositories`}
+            rel="noreferrer"
           >
             <div className="repo">
               <p>Repositories: </p>
@@ -86,6 +99,7 @@ const UserProfile = ({ data }) => {
           <a
             target={"_blank"}
             href={`https://github.com/${data.login}?tab=gist`}
+            rel="noreferrer"
           >
             <div className="gist">
               <p>Gists: </p>
