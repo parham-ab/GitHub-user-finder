@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 // React-Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -14,6 +14,10 @@ const MainPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const BASE_URL = `https://api.github.com/users`;
+  // show my github profile onMount
+  useEffect(() => {
+    GetMyGithub();
+  }, []);
   // fetch data function
   const GetUserData = async () => {
     setLoading(true);
@@ -40,6 +44,11 @@ const MainPage = () => {
         }
       });
     setLoading(false);
+  };
+  const GetMyGithub = () => {
+    axios.get(`${BASE_URL}/parham-ab`).then(function (res) {
+      setUserData([res.data]);
+    });
   };
   // submitHandler
   const submitHandler = async (e) => {
