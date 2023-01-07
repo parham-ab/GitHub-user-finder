@@ -1,4 +1,3 @@
-import React from "react";
 // icons
 import { RiUserFollowFill } from "react-icons/ri";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";

@@ -1,4 +1,3 @@
-import React from "react";
 // img
 import loading from "../assets/img/loading.gif";
 

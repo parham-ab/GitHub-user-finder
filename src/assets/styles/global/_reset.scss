@@ -1,0 +1,35 @@
+// CSS resets
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: none;
+  text-decoration: none;
+  border: none;
+}
+// scroll bar
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: rgb(158, 158, 158);
+  border-radius: 5px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgb(187, 187, 187);
+}
+::-webkit-scrollbar-thumb:active {
+  background-color: rgb(207, 207, 207);
+}
+// fonts
+body {
+  font-family: "Comfortaa", cursive;
+  font-family: "M PLUS Rounded 1c", sans-serif;
+  font-family: "Nunito", sans-serif;
+}

@@ -13,11 +13,6 @@
         font-size: 1rem;
         padding: 5px;
         width: 190px;
-        transition: all 0.3s;
-        &:focus {
-          width: 260px;
-          transition: all 0.3s;
-        }
       }
       svg {
         font-size: 32px;

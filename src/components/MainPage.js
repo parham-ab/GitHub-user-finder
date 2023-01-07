@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 // React-Toastify
 import { ToastContainer, toast } from "react-toastify";
@@ -14,7 +14,7 @@ const MainPage = () => {
   const [inputValue, setInputValue] = useState("");
   const [loading, setLoading] = useState(false);
   const BASE_URL = `https://api.github.com/users`;
-  // show my github profile onMount
+  // display my github profile onMount
   useEffect(() => {
     GetMyGithub();
   }, []);

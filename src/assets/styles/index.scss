@@ -1,17 +1,3 @@
-// CSS resets
-*,
-*::before,
-*::after {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  outline: none;
-  text-decoration: none;
-  border: none;
-}
-body {
-  font-family: tahoma;
-}
 // preloader
 .loading {
   display: flex;
@@ -23,3 +9,5 @@ body {
 @import "mainPage";
 @import "userProfile";
 @import "repository";
+@import "global/fonts";
+@import "global/reset";
