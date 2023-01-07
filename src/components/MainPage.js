@@ -10,54 +10,45 @@ import UserProfile from "./UserProfile";
 import Loading from "./Loading";
 
 const MainPage = () => {
+  const [loading, setLoading] = useState(true);
   const [userData, setUserData] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const [loading, setLoading] = useState(false);
   const BASE_URL = `https://api.github.com/users`;
   // display my github profile onMount
-  useEffect(() => {
-    GetMyGithub();
-  }, []);
-  // fetch data function
-  const GetUserData = async () => {
-    setLoading(true);
-    await axios
-      .get(`${BASE_URL}/${inputValue}`)
-      .then(function (res) {
-        setUserData([res.data]);
-      })
-      .catch(function (res) {
-        if (res instanceof Error) {
-          console.log(res.message);
-          toast.error("Not Found!!", {
-            position: "top-right",
-            autoClose: 1500,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            theme: "colored",
-          });
-        } else {
-          console.log([res.data]);
-        }
-      });
+  const GetUserGithub = async () => {
+    const { data } = await axios.get(`${BASE_URL}/parham-ab`);
     setLoading(false);
+    setUserData([data]);
   };
-  const GetMyGithub = () => {
-    axios.get(`${BASE_URL}/parham-ab`).then(function (res) {
-      setUserData([res.data]);
-    });
-  };
+  useEffect(() => {
+    GetUserGithub();
+  }, []);
   // submitHandler
-  const submitHandler = async (e) => {
+  const submitHandler = (e) => {
     e.preventDefault();
     // clear input
     setInputValue("");
-    await GetUserData();
+    // search user
+    const GetUserData = async () => {
+      try {
+        const { data } = await axios.get(`${BASE_URL}/${inputValue}`);
+        setLoading(false);
+        setUserData([data]);
+      } catch (error) {
+        toast.error("Not Found!!", {
+          position: "top-right",
+          autoClose: 1500,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          theme: "colored",
+        });
+      }
+    };
+    GetUserData();
   };
-
   return (
     <div className="mainPage-container">
       <form onSubmit={submitHandler}>
@@ -88,5 +79,4 @@ const MainPage = () => {
     </div>
   );
 };
-
 export default MainPage;
