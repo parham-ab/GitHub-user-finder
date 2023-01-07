@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 // icons
 import { RiUserFollowFill } from "react-icons/ri";
 import { HiOutlineLocationMarker, HiOutlineMail } from "react-icons/hi";
@@ -25,15 +26,15 @@ const UserProfile = ({ data }) => {
       <p className="bio">{data.bio}</p>
       <div className="follow">
         <RiUserFollowFill />
-        <a
+        {/* <a
           href={`https://github.com/${data.login}?tab=followers`}
           target="_blank"
-          className="followers"
           rel="noreferrer"
-        >
+        > */}
+        <Link to={`/followers`} className="followers">
           <span>{data.followers.toLocaleString()}</span> Followers
-        </a>
-        .
+        </Link>
+        {/* </a> */}.
         <a
           href={`https://github.com/${data.login}?tab=following`}
           target="_blank"

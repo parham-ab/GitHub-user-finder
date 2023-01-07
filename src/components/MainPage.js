@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import { Outlet, useNavigate } from "react-router-dom";
 // React-Toastify
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -14,6 +15,7 @@ const MainPage = () => {
   const [userData, setUserData] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const BASE_URL = `https://api.github.com/users`;
+  const navigate = useNavigate();
   // display my github profile onMount
   const GetUserGithub = async () => {
     const { data } = await axios.get(`${BASE_URL}/parham-ab`);
@@ -48,6 +50,7 @@ const MainPage = () => {
       }
     };
     GetUserData();
+    navigate("/");
   };
   return (
     <div className="mainPage-container">
@@ -76,6 +79,7 @@ const MainPage = () => {
         )
       )}
       <ToastContainer />
+      <Outlet />
     </div>
   );
 };
