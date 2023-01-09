@@ -6,8 +6,13 @@
   padding: 0;
   box-sizing: border-box;
   outline: none;
-  text-decoration: none;
   border: none;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style-type: none;
 }
 // scroll bar
 ::-webkit-scrollbar {

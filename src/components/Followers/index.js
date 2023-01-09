@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 // import paginate from "../utils";
-import { GitHubContext } from "../../context/GitHubContextProvider";
 import paginate from "../../utils";
+import Loading from "../Loading";
 
 const Followers = () => {
   // const { userData } = useContext(GitHubContext);
@@ -23,28 +23,18 @@ const Followers = () => {
     if (loading) return;
   }, [loading]);
   // console.log(data);
-  if (loading) return <h1>Loading...</h1>;
+  if (loading) return <Loading />;
 
   return (
-    <div>
-      {/* {data.map((item) => console.log(item.login))} */}
-      {/* {data.map((item, i) => (
-        <div key={i}>
-          <h4>{item}</h4>
-          <img src={item.isLogin} alt={item.login} />
+    <div className="d-flex text-center cards-container m-auto shadow">
+      {data.map((item) => (
+        <div key={item.id} className="follow-cards">
+          <img src={item.avatar_url} alt={item.login} />
+          <a href={item.id} target="_blank" rel="noreferrer">
+            <p>{item.login}</p>
+          </a>
         </div>
-      ))} */}
-
-      <div className="cards-container">
-        {data.map((item) => (
-          <div key={item.id} className="follow-cards">
-            <img src={item.avatar_url} alt={item.login} />
-            <a href={item.id} target="_blank" rel="noreferrer">
-              <p>{item.login}</p>
-            </a>
-          </div>
-        ))}
-      </div>
+      ))}
     </div>
   );
 };
