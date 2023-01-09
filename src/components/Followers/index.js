@@ -21,20 +21,32 @@ const Followers = () => {
   useEffect(() => {
     getData();
     if (loading) return;
-  }, [loading]);
-  // console.log(data);
+  }, [loading, page]);
+  // preloader
   if (loading) return <Loading />;
-
+  // paginate followers or followings
+  const paginateHandle = (i) => {
+    setPage(i);
+  };
   return (
-    <div className="d-flex text-center cards-container m-auto shadow">
-      {data.map((item) => (
-        <div key={item.id} className="follow-cards">
-          <img src={item.avatar_url} alt={item.login} />
-          <a href={item.id} target="_blank" rel="noreferrer">
-            <p>{item.login}</p>
-          </a>
-        </div>
-      ))}
+    <div>
+      <div className="d-flex text-center cards-container m-auto shadow">
+        {data.map((item) => (
+          <div key={item.id} className="follow-cards">
+            <img src={item.avatar_url} alt={item.login} />
+            <a href={item.id} target="_blank" rel="noreferrer">
+              <p>{item.login}</p>
+            </a>
+          </div>
+        ))}
+      </div>
+      <div>
+        {data.map((item, i) => (
+          <button key={i} onClick={() => paginateHandle(i + 1)}>
+            {i + 1}
+          </button>
+        ))}
+      </div>
     </div>
   );
 };
