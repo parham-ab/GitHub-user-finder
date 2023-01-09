@@ -1,0 +1,13 @@
+.cards-container {
+  display: flex;
+  justify-content: center;
+  .follow-cards {
+    background-color: rgb(54, 127, 190);
+    width: 300px;
+
+    img {
+      border-radius: 50%;
+      width: 80px;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Outlet, useNavigate } from "react-router-dom";
 // React-Toastify
@@ -9,10 +9,11 @@ import { BsGithub, BsSearch } from "react-icons/bs";
 // components
 import UserProfile from "./UserProfile";
 import Loading from "./Loading";
+import { GitHubContext } from "../context/GitHubContextProvider";
 
 const MainPage = () => {
-  const [loading, setLoading] = useState(true);
-  const [userData, setUserData] = useState([]);
+  const { loading, setLoading, userData, setUserData } =
+    useContext(GitHubContext);
   const [inputValue, setInputValue] = useState("");
   const BASE_URL = `https://api.github.com/users`;
   const navigate = useNavigate();
