@@ -1,7 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import paginate from "../../utils";
+// components
 import Loading from "../Loading";
+// context
 import { GitHubContext } from "../../context/GitHubContextProvider";
 
 const Followings = () => {

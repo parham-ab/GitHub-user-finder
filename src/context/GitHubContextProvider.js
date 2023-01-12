@@ -46,5 +46,4 @@ const GitHubContextProvider = ({ children }) => {
     </GitHubContext.Provider>
   );
 };
-
 export default GitHubContextProvider;
