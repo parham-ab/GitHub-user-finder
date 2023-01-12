@@ -31,7 +31,13 @@ const UserProfile = ({ data }) => {
           target="_blank"
           rel="noreferrer"
         > */}
-        <Link to={`/followers`} className="followers">
+        <Link
+          to={`/followers`}
+          className="followers"
+          onClick={() => {
+            window.scrollTo(9999, document.body.scrollHeight);
+          }}
+        >
           <span>{data.followers.toLocaleString()}</span> Followers
         </Link>
         {/* </a> */}.
@@ -41,7 +47,13 @@ const UserProfile = ({ data }) => {
           className="followings"
           rel="noreferrer"
         > */}
-        <Link to={`/followings`} className="followings">
+        <Link
+          to={`/followings`}
+          className="followings"
+          onClick={() => {
+            window.scrollTo(9999, document.body.scrollHeight);
+          }}
+        >
           <span>{data.following.toLocaleString()}</span> Followings
         </Link>
         {/* </a> */}
