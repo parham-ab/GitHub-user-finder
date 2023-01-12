@@ -11,7 +11,7 @@ const Followers = () => {
   const [data, setData] = useState([]);
   const getData = async () => {
     const res = await axios.get(
-      ` `
+      `https://api.github.com/users/${inputValue}/followers?per_page=100`
     );
     setData(paginate(res.data)[page]);
     setLoading(false);
