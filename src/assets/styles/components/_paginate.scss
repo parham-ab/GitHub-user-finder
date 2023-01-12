@@ -19,3 +19,23 @@
     }
   }
 }
+.paginate-container {
+  .paginate-btn {
+    margin: 0 10px;
+    cursor: pointer;
+  }
+  .active {
+    background: #3c5e89 !important;
+    color: #fff;
+    border-radius: 10px;
+    padding: 3px;
+  }
+  .follower-ended {
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      color: #5c5c5c;
+      transition: all 0.3s;
+    }
+  }
+}
