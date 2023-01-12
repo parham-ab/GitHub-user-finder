@@ -5,14 +5,13 @@ import Loading from "../Loading";
 import { GitHubContext } from "../../context/GitHubContextProvider";
 
 const Followers = () => {
-  const { inputValue, setInputValue } = useContext(GitHubContext);
+  const { inputValue } = useContext(GitHubContext);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
-  // const userId = data && data[0].login;
   const getData = async () => {
     const res = await axios.get(
-      `https://api.github.com/users/${inputValue}/followers?per_page=100`
+      ` `
     );
     setData(paginate(res.data)[page]);
     setLoading(false);
@@ -30,7 +29,7 @@ const Followers = () => {
   };
   // console.log(data);
   return (
-    <div>
+    <>
       <div className="d-flex text-center cards-container m-auto shadow-lg">
         {data &&
           data.map((item) => (
@@ -59,7 +58,7 @@ const Followers = () => {
           </span>
         )}
       </div>
-    </div>
+    </>
   );
 };
 

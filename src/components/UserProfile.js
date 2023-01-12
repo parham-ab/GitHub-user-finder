@@ -35,14 +35,16 @@ const UserProfile = ({ data }) => {
           <span>{data.followers.toLocaleString()}</span> Followers
         </Link>
         {/* </a> */}.
-        <a
+        {/* <a
           href={`https://github.com/${data.login}?tab=following`}
           target="_blank"
           className="followings"
           rel="noreferrer"
-        >
+        > */}
+        <Link to={`/followings`} className="followings">
           <span>{data.following.toLocaleString()}</span> Followings
-        </a>
+        </Link>
+        {/* </a> */}
       </div>
       {data.company && (
         <div className="company">
