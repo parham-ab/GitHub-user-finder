@@ -1,9 +1,5 @@
-import { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import { useEffect, useContext } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
-// React-Toastify
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 // icons
 import { BsGithub, BsSearch } from "react-icons/bs";
 // components
@@ -12,62 +8,17 @@ import Loading from "./Loading";
 import { GitHubContext } from "../context/GitHubContextProvider";
 
 const MainPage = () => {
-  const {
-    loading,
-    setLoading,
-    userData,
-    setUserData,
-    inputValue,
-    setInputValue,
-  } = useContext(GitHubContext);
-  const BASE_URL = `https://api.github.com/users`;
+  const { loading, userData, inputValue, setInputValue, GetUserData } =
+    useContext(GitHubContext);
   const navigate = useNavigate();
-  // search for user
-  const GetUserData = async () => {
-    try {
-      const { data } = await axios.get(`${BASE_URL}/${inputValue}`);
-      setLoading(false);
-      setUserData([data]);
-    } catch (error) {
-      toast.error("Not Found!!", {
-        position: "top-right",
-        autoClose: 1500,
-        hideProgressBar: false,
-        closeOnClick: true,
-        pauseOnHover: true,
-        draggable: true,
-        progress: undefined,
-        theme: "colored",
-      });
-    }
-  };
+
   // display my github profile onMount
   useEffect(() => {
-    // const GetUserGithub = async () => {
-    //   try {
-    //     const { data } = await axios.get(`${BASE_URL}/parham-ab`);
-    //     setLoading(false);
-    //     setUserData([data]);
-    //   } catch (error) {
-    //     toast.error("Not Found!!", {
-    //       position: "top-right",
-    //       autoClose: 1500,
-    //       hideProgressBar: false,
-    //       closeOnClick: true,
-    //       pauseOnHover: true,
-    //       draggable: true,
-    //       progress: undefined,
-    //       theme: "colored",
-    //     });
-    //   }
-    // };
-    // GetUserGithub();
     GetUserData();
   }, []);
   // submitHandler
   const submitHandler = (e) => {
     e.preventDefault();
-
     GetUserData();
     navigate("/");
   };
@@ -98,7 +49,6 @@ const MainPage = () => {
           (item) => item.login && <UserProfile key={item.id} data={item} />
         )
       )}
-      <ToastContainer />
       <Outlet />
     </div>
   );

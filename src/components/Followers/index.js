@@ -28,7 +28,7 @@ const Followers = () => {
   const paginateHandle = (i) => {
     setPage(i);
   };
-  console.log(data);
+  // console.log(data);
   return (
     <div>
       <div className="d-flex text-center cards-container m-auto shadow-lg">
@@ -47,8 +47,8 @@ const Followers = () => {
           data.map((item, i) => (
             <span
               key={i}
-              onClick={() => paginateHandle(i + 1)}
-              className={i + 1 == page ? "active paginate-btn" : "paginate-btn"}
+              onClick={() => paginateHandle(i)}
+              className={i == page ? "active paginate-btn" : "paginate-btn"}
             >
               {i + 1}
             </span>
