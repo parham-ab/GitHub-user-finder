@@ -12,47 +12,66 @@ import Loading from "./Loading";
 import { GitHubContext } from "../context/GitHubContextProvider";
 
 const MainPage = () => {
-  const { loading, setLoading, userData, setUserData } =
-    useContext(GitHubContext);
-  const [inputValue, setInputValue] = useState("");
+  const {
+    loading,
+    setLoading,
+    userData,
+    setUserData,
+    inputValue,
+    setInputValue,
+  } = useContext(GitHubContext);
   const BASE_URL = `https://api.github.com/users`;
   const navigate = useNavigate();
-  // display my github profile onMount
-  const GetUserGithub = async () => {
-    const { data } = await axios.get(`${BASE_URL}/parham-ab`);
-    setLoading(false);
-    setUserData([data]);
+  // search for user
+  const GetUserData = async () => {
+    try {
+      const { data } = await axios.get(`${BASE_URL}/${inputValue}`);
+      setLoading(false);
+      setUserData([data]);
+    } catch (error) {
+      toast.error("Not Found!!", {
+        position: "top-right",
+        autoClose: 1500,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "colored",
+      });
+    }
   };
+  // display my github profile onMount
   useEffect(() => {
-    GetUserGithub();
+    // const GetUserGithub = async () => {
+    //   try {
+    //     const { data } = await axios.get(`${BASE_URL}/parham-ab`);
+    //     setLoading(false);
+    //     setUserData([data]);
+    //   } catch (error) {
+    //     toast.error("Not Found!!", {
+    //       position: "top-right",
+    //       autoClose: 1500,
+    //       hideProgressBar: false,
+    //       closeOnClick: true,
+    //       pauseOnHover: true,
+    //       draggable: true,
+    //       progress: undefined,
+    //       theme: "colored",
+    //     });
+    //   }
+    // };
+    // GetUserGithub();
+    GetUserData();
   }, []);
   // submitHandler
   const submitHandler = (e) => {
     e.preventDefault();
-    // clear input
-    setInputValue("");
-    // search user
-    const GetUserData = async () => {
-      try {
-        const { data } = await axios.get(`${BASE_URL}/${inputValue}`);
-        setLoading(false);
-        setUserData([data]);
-      } catch (error) {
-        toast.error("Not Found!!", {
-          position: "top-right",
-          autoClose: 1500,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-          theme: "colored",
-        });
-      }
-    };
+
     GetUserData();
     navigate("/");
   };
+
   return (
     <div className="mainPage-container">
       <form onSubmit={submitHandler}>

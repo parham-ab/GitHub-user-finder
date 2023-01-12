@@ -2,17 +2,17 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import paginate from "../../utils";
 import Loading from "../Loading";
+import { GitHubContext } from "../../context/GitHubContextProvider";
 
 const Followers = () => {
-  // const { userData } = useContext(GitHubContext);
+  const { inputValue, setInputValue } = useContext(GitHubContext);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0);
   const [data, setData] = useState([]);
   // const userId = data && data[0].login;
-
   const getData = async () => {
     const res = await axios.get(
-      `https://api.github.com/users/parham-ab/followers?per_page=100`
+      `https://api.github.com/users/${inputValue}/followers?per_page=100`
     );
     setData(paginate(res.data)[page]);
     setLoading(false);
@@ -28,7 +28,7 @@ const Followers = () => {
   const paginateHandle = (i) => {
     setPage(i);
   };
-
+  console.log(data);
   return (
     <div>
       <div className="d-flex text-center cards-container m-auto shadow-lg">
